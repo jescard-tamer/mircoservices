@@ -29,6 +29,8 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
+	implementation("org.mapstruct:mapstruct:1.6.0.Beta1")
+	annotationProcessor("org.mapstruct:mapstruct-processor:1.6.0.Beta1")
 
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
