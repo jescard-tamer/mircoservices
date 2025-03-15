@@ -6,7 +6,7 @@ plugins {
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
-extra["springCloudVersion"] = "2024.0.0"
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
@@ -23,17 +23,17 @@ repositories {
     mavenCentral()
 }
 
+extra["springCloudVersion"] = "2024.0.0"
+
 dependencies {
-    implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
+    implementation("org.springframework.cloud:spring-cloud-starter-gateway")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
-
 
 dependencyManagement {
     imports {

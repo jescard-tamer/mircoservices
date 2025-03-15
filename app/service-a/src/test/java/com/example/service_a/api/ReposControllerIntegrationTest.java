@@ -24,12 +24,12 @@ class ReposControllerIntegrationTest {
 
     @Test
     void should_return_200_when_fetching() throws Exception {
-        mockMvc.perform(get("/repos")).andExpect(status().isOk());
+        mockMvc.perform(get("/service-a/repos")).andExpect(status().isOk());
     }
 
     @Test
     void should_return_data() throws Exception {
-        String contentAsString = mockMvc.perform(get("/repos")).andReturn().getResponse().getContentAsString();
+        String contentAsString = mockMvc.perform(get("/service-a/repos")).andReturn().getResponse().getContentAsString();
         FetchReposApiResponse response = objectMapper.readValue(contentAsString, new TypeReference<>() {
         });
 

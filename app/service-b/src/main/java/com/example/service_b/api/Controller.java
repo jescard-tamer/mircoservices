@@ -1,5 +1,6 @@
 package com.example.service_b.api;
 
+import com.example.service_b.core.FetchRepositoriesResponse;
 import com.example.service_b.core.IRepoFetcher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -10,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller implements Api {
 
     private final IRepoFetcher fetcher;
-    private final ApiMapper apiMapper;
+    private final ApiMapper mapper = ApiMapper.INSTANCE;
 
     @Override
     public ResponseEntity<FetchRepositoriesApiResponse> fetchRepos() {
-        return ResponseEntity.ok(apiMapper.map(fetcher.fetchRepos()));
+        FetchRepositoriesResponse response = fetcher.fetchRepos();
+        return ResponseEntity.ok(mapper.map(response));
     }
 }

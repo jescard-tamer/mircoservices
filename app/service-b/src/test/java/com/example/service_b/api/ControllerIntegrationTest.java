@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -22,8 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @EnableWebMvc
 @AutoConfigureMockMvc
-@SpringBootTest(classes = {Controller.class, IRepoFetcher.class, ApiMapper.class})
-@ComponentScan(basePackages = "com.example.service_b")
+@SpringBootTest
 class ControllerIntegrationTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -34,12 +32,9 @@ class ControllerIntegrationTest {
     @MockitoBean
     private IRepoFetcher fetcher;
 
-    @Autowired
-    ApiMapper apiMapper;
-
     @Test
     void should_return_200() throws Exception {
-        mockMvc.perform(get("/batata"))
+        mockMvc.perform(get("/service-b/batata"))
                 .andExpect(status().isOk());
     }
 
@@ -50,7 +45,7 @@ class ControllerIntegrationTest {
                 .randomData("random")
                 .build());
 
-        String reponseAsString = mockMvc.perform(get("/batata"))
+        String reponseAsString = mockMvc.perform(get("/service-b/batata"))
                 .andReturn()
                 .getResponse().getContentAsString();
 
