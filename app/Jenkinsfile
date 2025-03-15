@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Stage 1') {
+            steps {
+                script {
+                    echo "Starting Stage 1"
+                    sleep time: 2, unit: 'MINUTES'
+                    echo "Completed Stage 1"
+                }
+            }
+        }
+
+        stage('Stage 2') {
+            steps {
+                script {
+                    echo "Starting Stage 2"
+                    sleep time: 2, unit: 'MINUTES'
+                    echo "Completed Stage 2"
+                }
+            }
+        }
+
+        stage('Stage 3') {
+            steps {
+                script {
+                    echo "Starting Stage 3"
+                    sleep time: 2, unit: 'MINUTES'
+                    echo "Completed Stage 3"
+                }
+            }
+        }
+
+        stage('Stage 4') {
+            steps {
+                script {
+                    echo "Starting Stage 4"
+                    sleep time: 2, unit: 'MINUTES'
+                    echo "Completed Stage 4"
+                }
+            }
+        }
+
+        stage('Stage 5') {
+            steps {
+                script {
+                    echo "Starting Stage 5"
+                    sleep time: 2, unit: 'MINUTES'
+                    echo "Completed Stage 5"
+                }
+            }
+        }
+    }
+}
