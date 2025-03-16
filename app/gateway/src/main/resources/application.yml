@@ -8,13 +8,21 @@ spring:
           uri: lb://service-a
           predicates:
             - Path=/service-a/**
+          filters:
+            - StripPrefix=1 # Removes "/service-a" from the forwarded request
+            - RewritePath=/service-a/v3/api-docs, /v3/api-docs # Rewrite path for Swagger docs
 
         - id: service-b
           uri: lb://service-b
           predicates:
             - Path=/service-b/**
+          filters:
+            - StripPrefix=1 # Removes "/service-a" from the forwarded request
+            - RewritePath=/service-b/v3/api-docs, /v3/api-docs # Rewrite path for Swagger docs
+
+
     consul:
       host: localhost
       port: 8500
 server:
-  port: 8082
+  port: 8090

@@ -30,6 +30,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     implementation("org.mapstruct:mapstruct:1.6.3")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5")
 
     annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
 
